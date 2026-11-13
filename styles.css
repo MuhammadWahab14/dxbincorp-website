@@ -181,7 +181,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 .offices-grid strong{font-family:var(--head);font-size:1.1rem;color:var(--gold)}
 .offices-grid span{color:var(--text-dim);font-size:.95rem}
 
-.cta{background:var(--gold);color:var(--navy);padding:64px 0}
+.cta{background:#0b1924;color:var(--text);padding:64px 0;border-top:1px solid var(--line)}
 .cta-in{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .cta h2{max-width:20ch}
 .cta p{margin-top:8px;opacity:.85;max-width:60ch}
@@ -280,8 +280,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 .footer{background:#060d13;padding:64px 0 0;border-top:1px solid var(--line)}
 .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px}
 .foot-brand p{color:var(--text-dim);margin-top:18px;max-width:36ch;font-size:.95rem}
-.logo-chip{display:inline-block;background:#fff;border-radius:12px;padding:10px 14px}
-.logo-chip img{height:42px;width:auto}
+.foot-logo{display:inline-block}
+.foot-logo img{height:44px;width:auto}
 .footer h3{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500}
 .footer .foot-grid>div:not(.foot-brand) a{display:block;color:var(--text-dim);padding:5px 0;font-size:.95rem}
 .footer a:hover{color:var(--white)}

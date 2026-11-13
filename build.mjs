@@ -105,13 +105,13 @@ ${body(b)}
 <section class="cta">
   <div class="wrap cta-in">
     <div><h2>${h(NEED_HELP.h)}</h2><p>${h(NEED_HELP.p)}</p></div>
-    <a class="btn btn-dark" href="${b}contact-us.html">${h(NEED_HELP.cta)}</a>
+    <a class="btn btn-gold" href="${b}contact-us.html">${h(NEED_HELP.cta)}</a>
   </div>
 </section>
 <footer class="footer">
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      <a class="logo-chip" href="${b}index.html" aria-label="DXB Incorp home"><img src="${b}assets/logo.png" width="170" height="42" alt="DXB Incorp"></a>
+      <a class="foot-logo" href="${b}index.html" aria-label="DXB Incorp home"><img src="${b}assets/logo-nav.png" width="200" height="49" alt="DXB Incorp"></a>
       <p>${h(ABOUT.lead)}</p>
     </div>
     <div>
