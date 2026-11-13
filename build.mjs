@@ -3,6 +3,17 @@
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { PRICING, SITE, HERO, ABOUT, NEED_HELP, OFFICES, TYPES, HOME_CARDS, WHY_UAE, ZONES, SERVICES } from './src/content.mjs';
 
+// Security policy: written into every page as <meta> tags and into _headers for hosts that support real headers
+const CSP = ["default-src 'self'", "script-src 'self'", "style-src 'self' https://fonts.googleapis.com", 'font-src https://fonts.gstatic.com', "img-src 'self' data:", "media-src 'self'", "connect-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'self'"].join('; ');
+const REFERRER = 'strict-origin-when-cross-origin';
+const HEADERS = {
+  'Content-Security-Policy': CSP + "; frame-ancestors 'self'",
+  'X-Frame-Options': 'SAMEORIGIN',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': REFERRER,
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
+};
+
 const h = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const wa = msg => SITE.wa + encodeURIComponent(msg);
 const clip = (s, n = 155) => (s.length <= n ? s : s.slice(0, n).replace(/\s\S*$/, '') + '…');
@@ -58,6 +69,8 @@ function layout({ file, title, desc, body, active = '', ld = '' }) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="${CSP}">
+<meta name="referrer" content="${REFERRER}">
 <title>${h(title)}</title>
 <meta name="description" content="${h(desc)}">
 <link rel="canonical" href="${url}">
@@ -438,5 +451,6 @@ layout({
 /* ---------- sitemap + robots ---------- */
 const urls = pages.filter(p => p !== '404.html').map(p => `  <url><loc>${SITE.url}/${p === 'index.html' ? '' : p}</loc></url>`).join('\n');
 writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+writeFileSync('_headers', `/*\n${Object.entries(HEADERS).map(([k, v]) => `  ${k}: ${v}`).join('\n')}\n`);
 writeFileSync('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`);
 console.log(`Built ${pages.length} pages`);
