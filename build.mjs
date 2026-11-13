@@ -6,7 +6,6 @@ import { PRICING, SITE, HERO, ABOUT, NEED_HELP, OFFICES, TYPES, HOME_CARDS, WHY_
 const h = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const wa = msg => SITE.wa + encodeURIComponent(msg);
 const clip = (s, n = 155) => (s.length <= n ? s : s.slice(0, n).replace(/\s\S*$/, '') + '…');
-const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23d6ad60'/%3E%3Cpath d='M9 29 20 9l11 20h-5.2L20 18.4 14.2 29H9Z' fill='%2309121a'/%3E%3C/svg%3E";
 const pages = [];
 
 // optional hero background video: drop a clip at assets/hero.mp4 (or hero.webm) and rebuild
@@ -67,7 +66,8 @@ function layout({ file, title, desc, body, active = '', ld = '' }) {
 <meta property="og:description" content="${h(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${url}">
-<link rel="icon" href="${FAVICON}">
+<link rel="icon" type="image/png" href="${b}assets/favicon.png">
+<link rel="apple-touch-icon" href="${b}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
